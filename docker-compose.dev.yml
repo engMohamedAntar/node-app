@@ -1,0 +1,14 @@
+# docker-compose.dev.yml
+
+version: '3.8'
+services:
+  node-app:
+    build: 
+      context: .
+      target: development
+    volumes:
+      - ./src:/node-app/src:ro
+    environment:
+      - NODE_ENV=development
+    command: npm run start:dev
+

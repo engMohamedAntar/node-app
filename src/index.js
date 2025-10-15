@@ -28,7 +28,7 @@ redisClient.connect();
 
 app.get("/", async (req, res) => {
   await redisClient.set("value", "mohamed");
-  res.send("<h1> Hello Sir... Engineer</h1>");
+  res.send("<h1>Hello Tresmerg, using docker hub</h1>");
 });
 
 app.get("/data", async (req, res) => {

@@ -3,10 +3,7 @@
 version: '3.8'
 services:
   node-app:
-    container_name: node-app-container
     image: moantarnouh/node-app
-    ports:
-      - "4000:4000"
     env_file:
       - ./.env
     depends_on:

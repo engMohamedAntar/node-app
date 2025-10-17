@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import redis from 'redis';
 import { Client } from "pg";
 import 'dotenv/config';
+import os from 'os';
 
 const app = express();
 
@@ -28,12 +29,14 @@ redisClient.connect();
 
 app.get("/", async (req, res) => {
   await redisClient.set("value", "mohamed");
-  res.send("<h1>Hello Tresmerg, using docker hub</h1>");
+  console.log(`From container ${os.hostname}`);
+  
+  res.send("<h1>Hello Tresmerg... samy antar nouh sharaf</h1>");
 });
 
 app.get("/data", async (req, res) => {
   const value = await redisClient.get("value");
-  res.send(`<h1> Hello Sir... dfsdf</h1 <h2>${value}</h2`);
+  res.send(`<h1> Hello TresMerge...</h1 <h2>${value}</h2`);
 });
 
 app.listen(process.env.PORT, () =>

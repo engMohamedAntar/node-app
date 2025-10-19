@@ -1,17 +1,13 @@
 # Dockerfile
-
-FROM node:22.17.0 as base
-
-FROM base as development
+FROM node:22.17.0
 WORKDIR /node-app
 COPY package.json .
-RUN npm install
+
+ARG NODE_ENV
+RUN if [ "$NODE_ENV" = "development" ]; \
+    then npm install; \
+    else npm install --only=production; \
+    fi
+
 COPY . .
 CMD ["npm" , "run", "start:dev"]
-
-FROM base as production
-WORKDIR /node-app
-COPY package.json .
-RUN npm install --only= production
-COPY . .
-CMD ["npm", "start"]

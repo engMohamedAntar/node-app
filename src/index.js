@@ -31,7 +31,7 @@ app.get("/", async (req, res) => {
   await redisClient.set("value", "mohamed");
   console.log(`From container ${os.hostname}`);
   
-  res.send("<h1>Hello Tresmerg... with watchtower</h1>");
+  res.send("<h1>Hello Tresmerg... with docker swarm</h1>");
 });
 
 app.get("/data", async (req, res) => {
